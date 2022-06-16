@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "245512491018",
+    "project_id": "rn-crocodic-core",
+    "storage_bucket": "rn-crocodic-core.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245512491018:android:f3f79bf2202987b06f4ff3",
+        "android_client_info": {
+          "package_name": "your.sekolah.name"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245512491018-qst6hr2b1ugbhahhnf193s9gcp2cihf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQUHMYPFdTQmV-ZAELDhzc_YZ6nRoGHuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245512491018-qst6hr2b1ugbhahhnf193s9gcp2cihf9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "245512491018-29kebhab5heb05ffa4vb89va65k4ebho.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "id.crocodic.starterkit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

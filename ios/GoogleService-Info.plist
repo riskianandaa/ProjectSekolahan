@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>245512491018-29kebhab5heb05ffa4vb89va65k4ebho.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.245512491018-29kebhab5heb05ffa4vb89va65k4ebho</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAkVUN1OVeitfFj5TlYpafFRzn9L8SfjRc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>245512491018</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>id.crocodic.starterkit</string>
+	<key>PROJECT_ID</key>
+	<string>rn-crocodic-core</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rn-crocodic-core.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:245512491018:ios:f6ee6757a1a47bfd6f4ff3</string>
+</dict>
+</plist>
