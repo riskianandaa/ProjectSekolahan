@@ -1,4 +1,4 @@
-import { IContact } from "../../../types/IContact";
+import { IContact } from "@app-types/IContact";
 import { Icon } from "@assets/icon";
 import { JET_BLACK, LIGHT_GRAY, WHITE } from "@styles/colors";
 import React, { memo } from "react";

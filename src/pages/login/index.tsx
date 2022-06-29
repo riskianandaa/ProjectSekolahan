@@ -2,7 +2,7 @@ import { StackParamList } from '@navigator/StackParamList'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StatusBar, Text, View, TextInput, ImageBackground } from 'react-native'
-
+import { RectButton } from 'react-native-gesture-handler'
 import { Illustration } from '@assets/illustration'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import BackgroundImage from './components/image-background'
@@ -11,7 +11,7 @@ import LinearGradient from 'react-native-linear-gradient'
 function Login({ navigation, route }: StackScreenProps<StackParamList, 'Login'>) {
     const [Nis, setNis] = useState('')
     const [Password, setPassword] = useState('')
-
+    
     useEffect(() => {
         StatusBar.setBackgroundColor('rgba(0,0,0,0)')
         StatusBar.setBarStyle('dark-content')
@@ -38,26 +38,24 @@ function Login({ navigation, route }: StackScreenProps<StackParamList, 'Login'>)
                     }}
                 >
                     <LinearGradient
-                        colors={['#f2d5de','#FAFAFA', '#c4c7f5']}
-                        start={{x: 0, y: 0}}
-                        end={{x: 1, y: 1.5}}
-                        style = {{
-                                flex : 1
-                            }}
+                        colors={['#f2d5de', '#FAFAFA', '#c4c7f5']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 1.5 }}
+                        style={{
+                            flex : 1
+                        }}
                     >
-                    
+
                         <BackgroundImage />
                     </LinearGradient>
-
                     <View
                         style={{
-                            // flex : 1,
-                            marginTop : -25,
+                            marginTop: -25,
                             padding: 20,
                             backgroundColor: '#f7f7f5',
                             borderTopLeftRadius: 30,
                             borderTopRightRadius: 30,
-                            elevation : 2
+                            elevation: 2
                         }}
                     >
                         <Text
@@ -78,30 +76,19 @@ function Login({ navigation, route }: StackScreenProps<StackParamList, 'Login'>)
                             Masukkan detail informasi NIS dan Password untuk melanjutkan.
                         </Text>
 
-                        <View
+                        <TextInput
+                            placeholder='Nis'
+                            onChangeText={newValue => setNis(newValue)}
                             style={{
-                                // marginTop : 20
-                                marginTop: 30
+                                borderWidth: 1,
+                                borderColor: 'white',
+                                borderRadius: 15,
+                                padding: 10,
+                                backgroundColor: 'white',
+                                marginTop : 30
                             }}
-                        >
-                            <TextInput
-                                placeholder='Nis'
-                                onChangeText={newValue => setNis(newValue)}
-                                style={{
-                                    borderWidth: 1,
-                                    borderColor: 'white',
-                                    borderRadius: 15,
-                                    padding: 10,
-                                    backgroundColor: 'white'
-                                }}
-                                value={Nis}
-                            />
-                        </View>
-                        <View
-                            style={{
-                                marginTop: 20
-                            }}
-                        >
+                            value={Nis}
+                        />
                             <TextInput
                                 placeholder='Password'
                                 secureTextEntry={true}
@@ -111,11 +98,11 @@ function Login({ navigation, route }: StackScreenProps<StackParamList, 'Login'>)
                                     borderColor: 'white',
                                     borderRadius: 15,
                                     padding: 10,
-                                    backgroundColor: 'white'
+                                    backgroundColor: 'white',
+                                    marginTop : 20
                                 }}
                                 value={Password}
                             />
-                        </View>
 
                         <TouchableOpacity
                             activeOpacity={0.5}
@@ -125,9 +112,7 @@ function Login({ navigation, route }: StackScreenProps<StackParamList, 'Login'>)
                         >
                             <View
                                 style={{
-                                    // marginTop : 40,
                                     marginTop: 60,
-                                    marginBottom: 200,
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     borderRadius: 10,
