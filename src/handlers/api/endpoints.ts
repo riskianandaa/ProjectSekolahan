@@ -1,11 +1,14 @@
 import { APIConfigType } from "@handlers/api/Fetch"
 
 export type APIParamsType = {
-	GetContacts: void
+	Login: {
+		email : string
+		password : string
+	}
 }
 
 export const APIConfig: APIConfigType = {
-	GetContacts: [
-		'GET', 'users/', 'NO_HEADER'
+	Login: [
+		'POST', '/login' , 'NO_HEADER'
 	]
 }

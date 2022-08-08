@@ -1,4 +1,4 @@
-import { GRAY, JET_BLACK, WHITE } from '@styles/colors'
+import { GRAY, JET_BLACK, LIGHT_GRAY, WHITE } from '@styles/colors'
 import React from 'react'
 import { View, Text, Image} from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
@@ -20,7 +20,7 @@ function Item(props: PropsType) {
     return (
         <RectButton
             onPress={item.onPress}
-            rippleColor={GRAY}
+            rippleColor={LIGHT_GRAY}
             activeOpacity={0.5}
             style={{
                 borderRadius: 6,

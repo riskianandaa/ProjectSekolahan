@@ -1,153 +1,142 @@
+import Strings from '@constants/strings'
 import { StackParamList } from '@navigator/StackParamList'
 import { StackScreenProps } from '@react-navigation/stack'
-import { GRAY, JET_BLACK, PURPLE, WHITE } from '@styles/colors'
-import React, { useEffect } from 'react'
-import { SafeAreaView, ScrollView, View, Text, StatusBar } from 'react-native'
+import { GRAY, GREEN_DARK, JET_BLACK, PURPLE, WHITE, WHITESMOKE } from '@styles/colors'
+import moment from 'moment'
+import React, { useEffect, useRef } from 'react'
+import { SafeAreaView, ScrollView, View, Text, StatusBar, Dimensions } from 'react-native'
 
-import { Calendar, LocaleConfig } from 'react-native-calendars'
+import { Calendar, CalendarList, LocaleConfig } from 'react-native-calendars'
 import { ListItemDataAbsen } from './components/list-item-data-absensi'
 import ListAbsen from './components/listDataAbsen'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
 LocaleConfig.locales['Eng'] = {
     monthNames: [
-      'Januari',
-      'Februari',
-      'Maret',
-      'april',
-      'Mei',
-      'Juni',
-      'Juli',
-      'Agustus',
-      'September',
-      'Oktober',
-      'November',
-      'Desember'
+        'Januari',
+        'Februari',
+        'Maret',
+        'april',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
     ],
     monthNamesShort: ['Jan.', 'Feb.', 'Mar', 'Apr', 'Mey', 'Jun', 'Jul.', 'Aug', 'Sep.', 'Oct.', 'Nov.', 'Des.'],
-    dayNames: ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    dayNamesShort: ['Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     today: "Today"
-  };
-  LocaleConfig.defaultLocale = 'Eng';
+};
+LocaleConfig.defaultLocale = 'Eng';
 
-function Absensi ({navigation, route}: StackScreenProps<StackParamList, 'Absensi'>) {
-
+function Absensi({ navigation, route }: StackScreenProps<StackParamList, 'Absensi'>) {
+    const refCalendar = useRef<CalendarList>(null)
+    const today = new Date()
+    const todayString = moment(today).format(Strings.dateFormat)
     const Listabsen = [
         {
-            type : 'Absen Masuk - Berhasil',
-            date_time : '10 Juni 2022, 07:00 WIB',
-            descriptions : 'Tepat Waktu',
-            typeData : true
+            type: 'Absen Masuk - Berhasil',
+            date_time: '10 Juni 2022, 07:00 WIB',
+            descriptions: 'Tepat Waktu',
+            typeData: true
         } as ListItemDataAbsen,
         {
-            type : 'Absen Keluar - Berhasil',
-            date_time : '10 Juni 2022, 16:00 WIB',
-            descriptions : 'Tepat Waktu',
-            typeData : false
+            type: 'Absen Keluar - Berhasil',
+            date_time: '10 Juni 2022, 16:00 WIB',
+            descriptions: 'Tepat Waktu',
+            typeData: false
         } as ListItemDataAbsen
     ]
 
-    useEffect(() =>{
-    StatusBar.setBackgroundColor(WHITE)
+    useEffect(() => {
+        StatusBar.setBackgroundColor(WHITE)
     }, [])
 
-    return(
+    return (
         <SafeAreaView
             style={{
-                flex : 1,
-                backgroundColor : '#FAFAFA'
+                flex: 1,
+                backgroundColor: WHITESMOKE
             }}
         >
             <ScrollView
                 style={{
-                    flex : 1,
+                    flex: 1,
+                    backgroundColor: WHITESMOKE
                 }}
-                >
+            >
 
-                <View
-                    style={{
-                        flex : 1,
-                    }}
-                    >
-                        <Calendar
-                            onDayPress={day => {
-                                console.log('selected day', day);
-                            }}
-                            onDayLongPress={day => {
-                                console.log('selected day', day);
-                            }}
-                            markingType={'custom'}
-                            markedDates={{
-                                '2022-06-10': {
-                                customStyles: {
-                                    container: {
+                <CalendarList
+                    ref={refCalendar}
+                    markingType={'period'}
+                    horizontal
+                    pagingEnabled
+                    hideArrows={false}
+                    calendarHeight={Dimensions.get('window').width - 40}
+                    calendarWidth={Dimensions.get('window').width - 40}
+                    maxDate={todayString}
+                    markedDates={{
+                        '2022-06-10': {
+                            customStyles: {
+                                container: {
                                     backgroundColor: PURPLE
-                                    },
-                                    text: {
+                                },
+                                text: {
                                     color: 'white',
                                     fontWeight: 'bold'
-                                    }
                                 }
-                                }
-                            }}
-                            style={{
-                                // marginTop : 5
-                              }}
-                              theme={{
-                                backgroundColor: '#ffffff',
-                                calendarBackground: '#ffffff',
-                                textSectionTitleColor: '#b6c1cd',
-                                textSectionTitleDisabledColor: '#d9e1e8',
-                                selectedDayBackgroundColor: '#00adf5',
-                                selectedDayTextColor: '#ffffff',
-                                todayTextColor: '#00adf5',
-                                dayTextColor: '#2d4150',
-                                textDisabledColor: '#d9e1e8',
-                                dotColor: '#00adf5',
-                                selectedDotColor: '#ffffff',
-                                arrowColor: JET_BLACK,
-                                disabledArrowColor: '#d9e1e8',
-                                monthTextColor: JET_BLACK,
-                                indicatorColor: 'blue',
-                                textDayFontFamily: 'monospace',
-                                textMonthFontFamily: 'monospace',
-                                textDayHeaderFontFamily: 'monospace',
-                                textDayFontWeight: 'bold',
-                                textMonthFontWeight: 'bold',
-                                textDayHeaderFontWeight: 'bold',
-                                textDayFontSize: 16,
-                                textMonthFontSize: 16,
-                                textDayHeaderFontSize: 16
-                              }}
-                        />
-                
-                        <Text
-                            style={{
-                                fontWeight : 'bold',
-                                fontFamily : 'monospace',
-                                color : JET_BLACK,
-                                padding : 20
-                            }}
-                        >
-                            Riwayat Absensi
-                        </Text>
-
-                        <View>
-                            {
-                                Listabsen.map((data, index) => 
-                                    <ListAbsen 
-                                        data={data}
-                                        key={index.toString()}
-                                    />
-                                )
                             }
-                        </View>
+                        }
+                    }}
+                    // onDayPress={day => {
+                    //     onDayClicked(day)
+                    // }}
+                    // markedDates={getMarkedDates()}
+                    style={{
+                        alignSelf: 'center',
+                        height: Dimensions.get('window').width - 40,
+                        width: Dimensions.get('window').width - 40,
+                    }}
+                    renderArrow={(direction) => (
+                        <MaterialIcon
+                            name={direction == 'left' ? 'chevron-left' : 'chevron-right'}
+                            size={24}
+                            color='dimgray'
+                        />
+                    )}
+                    theme={{
+                        todayTextColor: GREEN_DARK,
+                        dayTextColor: '#2d4150'
+                    }}
+                />
+                <Text
+                    style={{
+                        fontWeight: 'bold',
+                        color: JET_BLACK,
+                        padding: 20
+                    }}
+                >
+                    Riwayat Absensi
+                </Text>
 
+                <View>
+                    {
+                        Listabsen.map((data, index) =>
+                            <ListAbsen
+                                data={data}
+                                key={index.toString()}
+                            />
+                        )
+                    }
                 </View>
 
             </ScrollView>
 
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 export default Absensi

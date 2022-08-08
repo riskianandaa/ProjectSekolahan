@@ -11,10 +11,15 @@ import { Illustration } from "@assets/illustration";
 import ListOptionsMenu, { ListOptionsMenuType } from "./components/list-options-menu";
 import { Icon } from '@assets/icon'
 import Chart from './components/chart'
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useIsFocused } from "@react-navigation/native";
 
 function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
 
     const [isRefreshing, setIsRefreshing] = useState(false)
+    const height = Dimensions.get('window').height / 3
+    const inset = useSafeAreaInsets()
+    const isFocus = useIsFocused()
 
     const Menus = [
         {
@@ -65,34 +70,33 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
 
     ]
 
-    useEffect(() => {
-        StatusBar.setBackgroundColor('#7dc278')
-        StatusBar.setBarStyle('dark-content')
-        StatusBar.setTranslucent
-    }, [])
+    useEffect(function onFocus() {
+        if (isFocus) {
+            setTimeout(() => {
+                StatusBar.setBackgroundColor('#7dc278')
+                StatusBar.setBarStyle('dark-content')
+                StatusBar.setTranslucent(true)
+            }, 200)
+        } else {
+            StatusBar.setBackgroundColor(WHITE)
+            StatusBar.setBarStyle('dark-content')
+        }
+    }, [isFocus])
 
     return (
         <SafeAreaView
-            // edges={['bottom']}
             style={{
                 flex: 1,
                 backgroundColor: 'white'
             }}
         >
-            {/* {
-                isLoading ?
-                    <ActivityIndicator
-                        animating={isLoading}
-                        color={JET_BLACK}
-                        hidesWhenStopped
-                        size="large"
-                        style={{
-                            flexGrow: 1
-                        }}
-                    />
-                    :
-                   null
-            } */}
+            <View
+                style={{
+                    height: inset.top,
+                    backgroundColor: '#7dc278',
+                    borderBottomLeftRadius: 30
+                }}
+            />
             <ScrollView
                 style={{
                     flex: 1,
@@ -101,7 +105,8 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
             >
                 <View
                     style={{
-                        height: 200,
+                        // height: 200,
+                        height: height,
                         backgroundColor: '#7dc278',
                         borderBottomLeftRadius: 30
                     }}
@@ -109,7 +114,8 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
                     <ImageBackground
                         source={Illustration.ic_pattern}
                         style={{
-                            height: 200
+                            // height: 200
+                            height: height
                         }}
                     />
                 </View>
@@ -181,7 +187,7 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
                         right: 0,
                         left: 0,
                         position: 'absolute',
-                        marginTop: 90
+                        marginTop: 100
                     }}
                 >
                     <Text
@@ -195,7 +201,7 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
                     <Text
                         style={{
                             color: WHITE,
-                            fontSize: 22,
+                            fontSize: 20,
                             paddingTop: 10,
                             fontWeight: 'bold'
                         }}
@@ -204,12 +210,14 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
                     </Text>
                 </View>
 
-                <View style={{
-                    padding: 20,
-                    borderTopRightRadius: 15,
-                    // marginTop : -10,
-                    backgroundColor: WHITE
-                }}>
+                <View
+                    style={{
+                        padding: 20,
+                        borderTopRightRadius: 15,
+                        // marginTop : -10,
+                        backgroundColor: WHITE
+                    }}
+                >
                     <Text
                         style={{
                             fontWeight: '500',
@@ -343,7 +351,7 @@ function Home({ navigation, route }: StackScreenProps<StackParamList, 'Home'>) {
 
             </ScrollView>
 
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 

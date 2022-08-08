@@ -20,7 +20,7 @@ const Stack = createStackNavigator<StackParamList>()
 function StackNavigator() {
     const screenOptions = useMemo<StackNavigationOptions>(
         () => ({
-            ...TransitionPresets.SlideFromRightIOS,
+            // ...TransitionPresets.SlideFromRightIOS,
             gestureEnabled: true,
             headerShown: true
         }),
@@ -36,6 +36,7 @@ function StackNavigator() {
                 name="SplashScreen"
                 component={SplashScreen}
                 options={{
+                    ...TransitionPresets.SlideFromRightIOS,
                     headerShown: false
                 }}
             />
@@ -44,6 +45,7 @@ function StackNavigator() {
                 name="Login"
                 component={Login}
                 options={{
+                    ...TransitionPresets.ScaleFromCenterAndroid,
                     headerShown: false
                 }}
             />

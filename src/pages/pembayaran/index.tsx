@@ -1,6 +1,6 @@
 import { StackParamList } from '@navigator/StackParamList'
 import { StackScreenProps } from '@react-navigation/stack'
-import { BLUE_LIGTH, GRAY, GREEN_GRAY, JET_BLACK, LIGTH_BLUE, LIGTH_GREEN, ORANGE, WHITE } from '@styles/colors'
+import { BLUE_LIGTH, GRAY, GREEN_GRAY, JET_BLACK, LIGTH_BLUE, LIGTH_GREEN, ORANGE, WHITE, WHITESMOKE } from '@styles/colors'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -33,8 +33,7 @@ function Pembayaran({ navigation, route }: StackScreenProps<StackParamList, 'Abs
         <SafeAreaView
             style={{
                 flex: 1,
-                backgroundColor: '#FAFAFA',
-                marginVertical: 5
+                backgroundColor: WHITESMOKE
             }}
         >
             <ScrollView
@@ -42,15 +41,6 @@ function Pembayaran({ navigation, route }: StackScreenProps<StackParamList, 'Abs
                     flex: 1
                 }}
             >
-                {/* <ScrollView
-                    horizontal
-                    style={{
-                        // flex : 1,
-                        backgroundColor : WHITE,
-                        padding : 20,
-                        alignSelf : 'center'
-                    }}
-                > */}
                 <View
                     style={{
                         // flex : 1,
@@ -91,7 +81,6 @@ function Pembayaran({ navigation, route }: StackScreenProps<StackParamList, 'Abs
                         2022
                     </Text>
                 </View>
-                {/* </ScrollView> */}
 
                 <View>
                     {

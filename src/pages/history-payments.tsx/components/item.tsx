@@ -19,7 +19,7 @@ function Item(props: PropsType) {
     return (
         <View
             style={{
-                marginTop: 10,
+                marginTop: 20,
                 flexDirection: 'row',
                 alignItems: 'center'
             }}

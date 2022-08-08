@@ -16,7 +16,7 @@ function Chart(){
                     }
                 ]
                 }}
-                width={Dimensions.get("window").width * 90/100} 
+                width={Dimensions.get("window").width * 90/105} 
                 height={220}
                 yAxisLabel=""
                 yAxisSuffix=""

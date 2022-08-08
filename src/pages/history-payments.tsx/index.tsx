@@ -119,6 +119,7 @@ function Tugas({ navigation, route }: StackScreenProps<StackParamList, 'Tugas'>)
                 }}
             />
             <ScrollView
+                showsVerticalScrollIndicator={false}
                 style={{
                     flex: 1,
                     marginTop : -55
